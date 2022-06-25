@@ -114,7 +114,15 @@
                     aria-expanded="false"
                     style="color: #def7ff; padding: 0 !important; ;"
                 >
-                    User
+                    <?php
+                    $name = Session::get('username');
+                    if(isset($name)){
+                        echo "Xin chào, " .$name; }
+                    else{
+                        echo 'Bạn chưa có tài khoản? Đăng ký ngay.';
+                    }
+                    Session::put('username', null);
+                    ?>
                 </a>
                 <ul
                     class="dropdown-menu"

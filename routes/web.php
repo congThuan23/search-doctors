@@ -49,5 +49,12 @@ Route::get('/statistic', [statistic::class, 'statistic']);
 Route::get('/statistic/print-report', [statistic::class, 'print_report'])->name('generate-pdf');
 
 // CLIENT PAGE
+Route::get('/login', [home::class, 'login']);
+Route::get('/register', [home::class, 'register']);
+Route::post('/verify-login', [home::class, 'verify_login']);
+
 Route::get('/', [home::class, 'index']);
 Route::get('/home', [home::class, 'search_doctors']);
+
+Route::get('/customer/{UserID}', [home::class, 'customer']);
+Route::get('/doctor/{UserID}', [home::class, 'doctor']);
