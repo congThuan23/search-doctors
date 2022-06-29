@@ -6,6 +6,10 @@ use App\Http\Controllers\CustomerController as customer;
 use App\Http\Controllers\DeptController as dept;
 use App\Http\Controllers\StatisticController as statistic;
 Use App\Http\Controllers\HomeController As home;
+Use App\Http\Controllers\InfoUserController As info;
+Use App\Http\Controllers\TrinhDoController;
+use App\Http\Controllers\WorkTimeController as wk;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,5 +60,20 @@ Route::post('/verify-login', [home::class, 'verify_login']);
 Route::get('/', [home::class, 'index']);
 Route::get('/home', [home::class, 'search_doctors']);
 
+
 Route::get('/customer/{UserID}', [home::class, 'customer']);
 Route::get('/doctor/{UserID}', [home::class, 'doctor']);
+
+Route::get('/edituser', [info::class, 'index']);
+Route::post('/update-info/{UserID}', [info::class, 'update_info']);
+
+//Trinhdo
+Route::get('/user/trinhdo', [TrinhDoController::class, 'index'])->name('trinhdo');
+Route::post('/user/trinhdo/{UserID}', [TrinhDoController::class, 'store'])->name('trinhdo.store');
+
+//lich trinh
+Route::get('/worktime', [wk::class, 'index']);
+Route::get('/worktime/update/{WorkTimeID}',[wk::class,'edit_worktime' ]);
+Route::post('/worktime/update/{UserID}',[wk::class,'update_worktime' ]);
+Route::get('/worktime/add',[wk::class,'add_workTime']);
+Route::post('/worktime/save',[wk::class,'save_workTime']);
