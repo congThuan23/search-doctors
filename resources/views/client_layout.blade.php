@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('public/frontend/index.css') }}" />
     <title>Document</title>
     <!-- CSS only -->
@@ -415,36 +416,31 @@
     </div>
 </header>
 <!-- JavaScript Bundle with Popper -->
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-    crossorigin="anonymous"
-></script>
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous">
-</script>
+
 
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $("#dept").on('change', function() {
-            const level = $(this).val();
-            if(level){
-                $.ajax ({
-                    type: 'Get',
-                    url: '{{URL::to('home')}}/' + level,
-                    data:{
-                        keyword: level
-                    },
-                    dataType: "json",
-                    success:function (response){
-                        console.table(response);
-                        $('#list_doctor').html(response);
-                    }
-                });
-            }
-        });
+    $('#doctor_search').keyup(function (){
+        const query = $(this).val();
+        if(query != ''){
+            const _token = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                url:"{{url('/autocomplete-ajax')}}",
+                method: "POST",
+                data: {query:query, _token:_token},
+                success:function (data){
+                    $('#search_ajax').fadeIn();
+                    $('#search_ajax').html(data);
+                }
+            });
+        }else {
+            $('#search_ajax').fadeOut();
+        }
+    });
+    $(document).on('click','.li_search_ajax',function (){
+       $('#doctor_search').val($(this).text());
+       $('#search_ajax').fadeOut();
     });
 </script>
+
 </body>
 </html>

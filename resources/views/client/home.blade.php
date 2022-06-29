@@ -18,137 +18,20 @@
                                     class="form-control ng-pristine ng-untouched ng-valid ng-not-empty"
                                     ng-init="selectedSpeciality='0'"
                                     ng-model="selectedSpeciality"
-                                    ng-change="searchDoctors()"
-                                >
+                                    ng-change="searchDoctors()">
                                     <option
+                                        disabled
                                         style="font-size: 14px"
-                                        value="0"
-                                        selected="selected"
-                                    >
-                                        Tất Cả Chuyên Khoa
+                                        selected = "selected"
+                                    >--- Tất cả chuyên khoa ---
                                     </option>
-                                    <option
-                                        disabled=""
-                                        style="font-size: 14px"
-                                        value="669"
-                                    >
-                                        Chuyên khoa trị liệu thần kinh cột sống ACC
-                                    </option>
-                                    <option
-                                        disabled=""
-                                        style="font-size: 14px"
-                                        value="665"
-                                    >
-                                        Dịch vụ COVID-19
-                                    </option>
-                                    <option style="font-size: 14px" value="666">
-                                        &nbsp;&nbsp;Khoa điều trị COVID-19
-                                    </option>
-                                    <option disabled="" style="font-size: 14px" value="5">
-                                        Các Chuyên Khoa Nội
-                                    </option>
-                                    <option style="font-size: 14px" value="6">
-                                        &nbsp;&nbsp;Khoa Cấp Cứu
-                                    </option>
-                                    <option style="font-size: 14px" value="14">
-                                        &nbsp;&nbsp;Khoa Gây Mê Hồi Sức
-                                    </option>
-                                    <option style="font-size: 14px" value="10">
-                                        &nbsp;&nbsp;Chuyên Khoa Tim
-                                    </option>
-                                    <option style="font-size: 14px" value="16">
-                                        &nbsp;&nbsp;Khoa Tâm lý Lâm Sàng
-                                    </option>
-                                    <option style="font-size: 14px" value="11">
-                                        &nbsp;&nbsp;Khoa Da Liễu
-                                    </option>
-                                    <option style="font-size: 14px" value="32">
-                                        &nbsp;&nbsp;Khoa Dinh Dưỡng
-                                    </option>
-                                    <option style="font-size: 14px" value="585">
-                                        &nbsp;&nbsp;Trung tâm Điều trị &amp; Chăm sóc Da
-                                        bằng Laser FV
-                                    </option>
-                                    <option style="font-size: 14px" value="12">
-                                        &nbsp;&nbsp;Chuyên Khoa Tiêu Hóa &amp; Gan Mật
-                                    </option>
-                                    <option style="font-size: 14px" value="7">
-                                        &nbsp;&nbsp;Khoa Nội Đa Khoa
-                                    </option>
-                                    <option style="font-size: 14px" value="13">
-                                        &nbsp;&nbsp;Trung Tâm Điều Trị Ung Thư Hy Vọng
-                                    </option>
-                                    <option style="font-size: 14px" value="9">
-                                        &nbsp;&nbsp;Khoa Nội
-                                    </option>
-                                    <option style="font-size: 14px" value="8">
-                                        &nbsp;&nbsp;Khoa Nhi và Nhi sơ sinh
-                                    </option>
-                                    <option style="font-size: 14px" value="15">
-                                        &nbsp;&nbsp;Trung tâm Điều trị Đau
-                                    </option>
-                                    <option style="font-size: 14px" value="663">
-                                        &nbsp;&nbsp;Khoa Y Học Cổ Truyền
-                                    </option>
-                                    <option
-                                        disabled=""
-                                        style="font-size: 14px"
-                                        value="28"
-                                    >
-                                        Các Dịch Vụ Hỗ Trợ
-                                    </option>
-                                    <option style="font-size: 14px" value="29">
-                                        &nbsp;&nbsp;Khoa Chẩn Đoán Hình Ảnh
-                                    </option>
-                                    <option style="font-size: 14px" value="31">
-                                        &nbsp;&nbsp;Khoa Xét Nghiệm &amp; Ngân Hàng Máu
-                                    </option>
-                                    <option style="font-size: 14px" value="30">
-                                        &nbsp;&nbsp;Khoa Y Học Hạt Nhân
-                                    </option>
-                                    <option style="font-size: 14px" value="33">
-                                        &nbsp;&nbsp;Khoa Vật Lý Trị Liệu Và Phục Hồi Chức
-                                        Năng
-                                    </option>
-                                    <option
-                                        disabled=""
-                                        style="font-size: 14px"
-                                        value="17"
-                                    >
-                                        Các chuyên Khoa Ngoại
-                                    </option>
-                                    <option style="font-size: 14px" value="19">
-                                        &nbsp;&nbsp;Khoa Chấn Thương Chỉnh Hình
-                                    </option>
-                                    <option style="font-size: 14px" value="26">
-                                        &nbsp;&nbsp;Viện Thẩm mỹ FV Lifestyle
-                                    </option>
-                                    <option style="font-size: 14px" value="18">
-                                        &nbsp;&nbsp;Khoa Ngoại Tổng Quát
-                                    </option>
-                                    <option style="font-size: 14px" value="24">
-                                        &nbsp;&nbsp;Khoa Nha &amp; Phẫu Thuật Hàm Mặt
-                                    </option>
-                                    <option style="font-size: 14px" value="27">
-                                        &nbsp;&nbsp;Ngoại Thần Kinh Và Can Thiệp Nội Mạch
-                                        Thần Kinh
-                                    </option>
-                                    <option style="font-size: 14px" value="21">
-                                        &nbsp;&nbsp;Khoa Sản Phụ khoa Trung tâm điều trị
-                                        bệnh lý tuyến vú
-                                    </option>
-                                    <option style="font-size: 14px" value="25">
-                                        &nbsp;&nbsp;Khoa Mắt và Phẫu thuật khúc xạ
-                                    </option>
-                                    <option style="font-size: 14px" value="23">
-                                        &nbsp;&nbsp;Khoa Tai Mũi Họng
-                                    </option>
-                                    <option style="font-size: 14px" value="22">
-                                        &nbsp;&nbsp;Khoa Tiết Niệu &amp; Nam Khoa
-                                    </option>
-                                    <option style="font-size: 14px" value="20">
-                                        &nbsp;&nbsp;Khoa Phẫu Thuật Mạch Máu
-                                    </option>
+                                    @foreach($all_dept as $dept)
+                                        <option
+                                            style="font-size: 14px"
+                                            value="{{$dept->DeptID}}"
+                                        >{{$dept->Name}}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -160,10 +43,12 @@
                             <input
                                 name="doctor_search"
                                 id="doctor_search"
+                                autocomplete="off"
                                 class="form-control ng-pristine ng-untouched ng-valid ng-empty"
                                 placeholder="Tên bác sĩ"
                                 ng-model="search.name"
                             />
+                            <div id="search_ajax"></div>
                         </div>
                         <div
                             class="form-group form__submit closee"

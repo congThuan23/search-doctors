@@ -10,8 +10,6 @@ use mysql_xdevapi\Table;
 
 class HomeController extends Controller
 {
-    public $fullName = '';
-
     public function login()
     {
         return view('login');
@@ -34,12 +32,19 @@ class HomeController extends Controller
                 return Redirect::to('/doctor/'.$result->UserID);
             }
             else if ($result->RoleID == 4){
-                return Redirect::to('/customer/'.$result->UserID);
+                if ($result->Status == 0){
+                    Session::put('message','Tài khoản đã bị khoá!');
+                    return Redirect::to('/login');
+                }
+                else{
+                    return Redirect::to('/customer/'.$result->UserID);
+                }
             }
             else{
                 return 'Đây là trang chuyên khoa';
             }
-        }else{
+        }
+        else{
             Session::put('message','UserName hoặc Mật khẩu sai!');
             return Redirect::to('/login');
         }
@@ -103,9 +108,8 @@ class HomeController extends Controller
             'all_week_schedule','all_day_schedule', 'all_work_schedule'));
     }
 
-    public function search_doctors(Request $request){
-        $all_doctor = DB::table('user')->where('RoleID',3)
-            ->Where('user.FullName', 'LIKE', "%{$request->doctor_search}%")
+    public function search_doctors($UserID){
+        $all_doctor = DB::table('user')->where('RoleID',3)->Where('UserID',$UserID)
             ->join('special_info','user.UserID', '=', 'special_info.DoctorID')
             ->join('language_of_doctor','User.UserID', '=', 'language_of_doctor.DoctorID')
             ->select('user.UserID','user.FullName as doctor_name','special_info.Degree as doctor_degree',
@@ -123,6 +127,46 @@ class HomeController extends Controller
         $all_language = DB::table('language')->select('LanguageID', 'Language')->get();
 
         return view('client.home', compact('all_doctor','all_dept','all_language','get_languageID'));
+    }
+
+    public function search_doctors_form(Request $request){
+        $all_doctor = DB::table('user')->where('RoleID',3)
+            ->Where('user.FullName', 'LIKE', "%{$request->doctor_search}%")
+            ->join('special_info','user.UserID', '=', 'special_info.DoctorID')
+            ->Where('special_info.DeptID', 'LIKE', "%{$request->dept_search}%")
+            ->join('language_of_doctor','User.UserID', '=', 'language_of_doctor.DoctorID')
+            ->select('user.UserID','user.FullName as doctor_name','special_info.Degree as doctor_degree',
+                'special_info.AcademicRank as doctor_academicRank','special_info.DeptID',
+                'special_info.Certificate as doctor_certificate','special_info.Experience as doctor_experience',
+                'special_info.ResearchWork as doctor_researchWork',
+                'special_info.ClinicalFields as doctor_clinicalFields')
+            ->orderby('user.Count', 'DESC')->distinct()->get();
+
+        $all_dept = DB::table('dept')->select('DeptID', 'Name')->get();
+
+        $get_languageID = DB::table('language_of_doctor')
+            ->join('user','user.UserID', '=', 'language_of_doctor.DoctorID')
+            ->select('language_of_doctor.LanguageID', 'user.UserID')->get();
+        $all_language = DB::table('language')->select('LanguageID', 'Language')->get();
+
+        return view('client.home', compact('all_doctor','all_dept','all_language','get_languageID'));
+    }
+
+    public function autocomplete_ajax(Request $request){
+        $data = $request->all();
+
+        if($data['query']){
+            $all_doctor = DB::table('user')->where('RoleID',3)
+            ->Where('FullName', 'LIKE', '%'. $data['query'] .'%')->get();
+
+            $output = '<ul class="dropdown-menu" style ="display: block; position:relative">';
+            foreach ($all_doctor as $key=>$val){
+                $output .= '
+                <li style="width: 300px;" class="li_search_ajax"><a href="/home/'. $val->UserID .'">' . $val->FullName .'</a></li>';
+            }
+            $output .='</ul>';
+            echo $output;
+        }
     }
 
     public function doctor($UserID){
