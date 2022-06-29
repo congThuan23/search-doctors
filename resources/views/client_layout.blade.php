@@ -116,13 +116,12 @@
                     style="color: #def7ff; padding: 0 !important; ;"
                 >
                     <?php
-                    $name = Session::get('username');
-                    if(isset($name)){
-                        echo "Xin chào, " .$name; }
-                    else{
-                        echo 'Bạn chưa có tài khoản? Đăng ký ngay.';
-                    }
-
+                        $name = Session::get('username');
+                        if(isset($name)){
+                            echo "Xin chào, " .$name; }
+                        else{
+                            echo 'Bạn chưa có tài khoản? Đăng ký ngay.';
+                        }
                     ?>
                 </a>
                 <ul
@@ -132,7 +131,7 @@
                     <li><a class="dropdown-item" href="{{URL::to('/edituser')}}">Thông tin cá nhân</a></li>
                     <li><a class="dropdown-item" href="{{URL::to('/worktime')}}">Lich trình làm việc</a></li>
                     <li>
-                        <a class="dropdown-item" href="{{URL::to('/trinhdo')}}">Trình độ năng lực</a>
+                        <a class="dropdown-item" href="{{route('trinhdo')}}">Trình độ năng lực</a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="#">Đăng xuất</a>
