@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ asset('public/frontend/index.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/frontend/trinhdonangluc.css') }}" />
-
     <title>Document</title>
     <!-- CSS only -->
     <link
@@ -129,8 +128,8 @@
                     class="dropdown-menu"
                     aria-labelledby="navbarDropdownMenuLink"
                 >
-                    <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
-                    <li><a class="dropdown-item" href="#">Lich trình làm việc</a></li>
+                    <li><a class="dropdown-item" href="{{URL::to('/edituser')}}">Thông tin cá nhân</a></li>
+                    <li><a class="dropdown-item" href="{{URL::to('/worktime')}}">Lich trình làm việc</a></li>
                     <li>
                         <a class="dropdown-item" href="{{route('trinhdo')}}">Trình độ năng lực</a>
                     </li>
