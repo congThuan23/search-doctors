@@ -29,9 +29,11 @@ class HomeController extends Controller
         $result = DB::table('user')->where('Email',$email_user)->where ('Password',$password_user)->first();
 
         if($result){
+            Session::put('username',$result->FullName);
+            Session::put('userid',$result->UserID);
             if($result->RoleID == 3)
             {
-                return Redirect::to('/doctor/'.$result->UserID);
+                return redirect()->route('doctor');
             }
             else if ($result->RoleID == 4){
                 return Redirect::to('/customer/'.$result->UserID);

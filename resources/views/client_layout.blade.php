@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ asset('public/frontend/index.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/frontend/trinhdonangluc.css') }}" />
+
     <title>Document</title>
     <!-- CSS only -->
     <link
@@ -115,13 +117,12 @@
                     style="color: #def7ff; padding: 0 !important; ;"
                 >
                     <?php
-                    $name = Session::get('username');
-                    if(isset($name)){
-                        echo "Xin chào, " .$name; }
-                    else{
-                        echo 'Bạn chưa có tài khoản? Đăng ký ngay.';
-                    }
-                    Session::put('username', null);
+                        $name = Session::get('username');
+                        if(isset($name)){
+                            echo "Xin chào, " .$name; }
+                        else{
+                            echo 'Bạn chưa có tài khoản? Đăng ký ngay.';
+                        }
                     ?>
                 </a>
                 <ul
@@ -131,7 +132,7 @@
                     <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
                     <li><a class="dropdown-item" href="#">Lich trình làm việc</a></li>
                     <li>
-                        <a class="dropdown-item" href="trinhdonangluc.html">Trình độ năng lực</a>
+                        <a class="dropdown-item" href="{{route('trinhdo')}}">Trình độ năng lực</a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="#">Đăng xuất</a>

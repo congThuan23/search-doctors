@@ -6,6 +6,8 @@ use App\Http\Controllers\CustomerController as customer;
 use App\Http\Controllers\DeptController as dept;
 use App\Http\Controllers\StatisticController as statistic;
 Use App\Http\Controllers\HomeController As home;
+Use App\Http\Controllers\TrinhDoController;
+Use App\Http\Controllers\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,4 +59,10 @@ Route::get('/', [home::class, 'index']);
 Route::get('/home', [home::class, 'search_doctors']);
 
 Route::get('/customer/{UserID}', [home::class, 'customer']);
-Route::get('/doctor/{UserID}', [home::class, 'doctor']);
+
+//Doctor
+Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor');
+
+//Trinhdo
+Route::get('/doctor/trinhdo', [TrinhDoController::class, 'index'])->name('trinhdo');
+Route::post('/doctor/trinhdo/{UserID}', [TrinhDoController::class, 'store'])->name('trinhdo.store');
