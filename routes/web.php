@@ -58,7 +58,10 @@ Route::get('/register', [home::class, 'register']);
 Route::post('/verify-login', [home::class, 'verify_login']);
 
 Route::get('/', [home::class, 'index']);
-Route::get('/home', [home::class, 'search_doctors']);
+Route::get('/home', [home::class, 'search_doctors_form']);
+Route::get('/home/{UserID}', [home::class, 'search_doctors']);
+
+Route::post('/autocomplete-ajax',[home::class, 'autocomplete_ajax']);
 
 
 Route::get('/customer/{UserID}', [home::class, 'customer']);
