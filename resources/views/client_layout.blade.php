@@ -115,6 +115,7 @@
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                     style="color: #def7ff; padding: 0 !important; ;"
+                    data-toggle="dropdown"
                 >
                     <?php
                         $name = Session::get('username');
