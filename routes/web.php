@@ -68,17 +68,13 @@ Route::get('/customer/{UserID}', [home::class, 'customer']);
 
 //Doctor
 Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor');
-Route::get('/doctor/{UserID}', [home::class, 'doctor']);
+Route::get('/doctor/view/{UserID}', [home::class, 'doctor']);
 //Trinhdo
 Route::get('/doctor/trinhdo', [TrinhDoController::class, 'index'])->name('trinhdo');
 Route::post('/doctor/trinhdo/{UserID}', [TrinhDoController::class, 'store'])->name('trinhdo.store');
 
 Route::get('/edituser', [info::class, 'index']);
 Route::post('/update-info/{UserID}', [info::class, 'update_info']);
-
-//Trinhdo
-Route::get('/user/trinhdo', [TrinhDoController::class, 'index'])->name('trinhdo');
-Route::post('/user/trinhdo/{UserID}', [TrinhDoController::class, 'store'])->name('trinhdo.store');
 
 //lich trinh
 Route::get('/worktime', [wk::class, 'index']);
